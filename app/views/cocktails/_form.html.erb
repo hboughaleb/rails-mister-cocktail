@@ -1,0 +1,13 @@
+<%= simple_form_for @cocktail, html: { class: "form-group"} do |f| %>
+  <% if @cocktail.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @cocktail.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.input :name, input_html: { placeholder: "Old Fashionned", class: 'form-control' } %>
+  <%= f.submit class: "btn btn-success" %>
+<% end %>
