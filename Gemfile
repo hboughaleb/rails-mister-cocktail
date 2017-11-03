@@ -38,10 +38,15 @@ gem 'simple_form'
 gem "bootstrap-sass"
 gem "font-awesome-sass"
 gem "autoprefixer-rails"
+gem 'figaro'
+
+
+gem 'cloudinary', '1.1.7'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
   gem 'better_errors'
   gem 'binding_of_caller'
 end
@@ -59,3 +64,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rspec-rails', group: [ :test ]
 gem 'rails-controller-testing', group: [ :test ]
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap'
+end

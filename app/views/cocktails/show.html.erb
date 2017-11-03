@@ -1,14 +1,36 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <h1><%= @cocktail.name %></h1>
-      <% @cocktail.ingredients.each do |i| %>
-        <ul>
-          <li><%= i.dose %> of <%= i %></li>
-        </ul>
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
+      <h1 class="text-center"><%= @cocktail.name %></h1>
+      <% if @cocktail.photo? %>
+        <%= cl_image_tag @cocktail.photo.path, width: 200, height: 300, crop: :fill %>
       <% end %>
-      <%= link_to "Home", cocktails_path %>
-      <%= link_to "Edit", edit_cocktail_path(@cocktail) %>
+
+      <ul class="list-unstyled">
+        <% @cocktail.doses.each do |dose| %>
+          <li><%= link_to dose.ingredient.name, ingredient_path(dose.ingredient) %> : <%= dose.description %>
+            <%= link_to "<i class='fa fa-close'></i>".html_safe, dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } %></li>
+        <% end %>
+      </ul>
+
+      <h2 class="text-center">Add a Dose</h2>
+
+      <%= simple_form_for([@cocktail, @dose]) do |f| %>
+        <% if @dose.errors.any? %>
+          <ul>
+            <% @dose.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
+
+        <%= f.input :description, placeholder: "2 teaspoons" %>
+        <%= f.input :ingredient_id, collection: Ingredient.all, prompt: "Choose an ingredient" %>
+        <%= f.submit class: "btn btn-primary" %>
+      <% end %>
+
+      <%= link_to 'Back', cocktails_path %>
     </div>
   </div>
 </div>

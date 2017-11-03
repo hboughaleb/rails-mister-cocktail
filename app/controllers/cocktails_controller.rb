@@ -1,14 +1,12 @@
 class CocktailsController < ApplicationController
-before_action :set_cocktail, only: [:show, :edit, :update, :destroy]
-
+before_action :set_cocktail, only: [:show]
   def index
     @cocktails = Cocktail.all
   end
 
   def show
-    # @dose = Dose.new
-
-
+    @dose = Dose.new
+    @ingredients = Ingredient.all
   end
 
   def new
@@ -24,21 +22,6 @@ before_action :set_cocktail, only: [:show, :edit, :update, :destroy]
     end
   end
 
-  def edit
-
-  end
-
-  # def update
-
-  #   @cocktail.update(cocktail_params)
-  #   redirect_to cocktail_path(@cocktail)
-  # end
-
-  # def destroy
-  #   @cocktail.destroy
-  #   redirect_to cocktails_path
-  # end
-
   private
 
   def set_cocktail
@@ -46,8 +29,6 @@ before_action :set_cocktail, only: [:show, :edit, :update, :destroy]
   end
 
   def cocktail_params
-    # *Strong params*: You need to *whitelist* what can be updated by the user
-    # Never trust user data!
-    params.require(:cocktail).permit(:name)
+    params.require(:cocktail).permit(:name, :photo)
   end
 end

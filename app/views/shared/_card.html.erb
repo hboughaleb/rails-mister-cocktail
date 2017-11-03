@@ -1,0 +1,14 @@
+<% if cocktail.photo %>
+ <div class="card "
+  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),url('<%= cl_image_path cocktail.photo.path, height: 300, width: 400, crop: :fill %>')">
+    <div class="card-description">
+      <h3>
+      <%= link_to cocktail.name, cocktail_path(cocktail) %>
+      </h3>
+    </div>
+  </div>
+<% else %>
+  <div class="card-header" style="background-image: url('http://www.seriouseats.com/images/2014/11/20141104-cocktail-party-old-fashioneds-holiday-vicky-wasik-3.jpg')">
+  </div>
+<% end %>
+
