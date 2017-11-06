@@ -8,6 +8,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-weight: lighter ;
+
 }
 
 /* Logo */
@@ -37,11 +39,11 @@
 
 /* Navbar link */
 .navbar-wagon-link {
-  color: #616668;
-  font-size: 14px;
+  color: #224F6B;
+  font-size: 20px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: #FFD700;
   text-decoration: none;
 }
 
@@ -75,3 +77,6 @@
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
 }
+
+
+
